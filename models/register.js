@@ -13,8 +13,8 @@ const registerSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    },
-  
+  },
+
   password: {
     type: String,
     required: true,
@@ -24,5 +24,4 @@ const registerSchema = new mongoose.Schema({
 });
 
 const Register = mongoose.model('User', registerSchema);
-// Register.createIndexes();
 module.exports = Register;
