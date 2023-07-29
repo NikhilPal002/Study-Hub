@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/register');
+const User = require('../models/user');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+// require('dotenv').config();
+
+// const JWT_SECRET = process.env.JWT_SECRET;
 
 router.post('/register',
   body('username').isLength({ min: 3, max: 20 }),
@@ -28,6 +32,16 @@ router.post('/register',
       });
 
       const savedUser = await newUser.save();
+
+      // const data = {
+      //   user:{
+      //     userId : savedUser.id,
+      //     userEmail : savedUser.email,
+      //   }
+      // }
+      // const authtoken = jwt.sign(data,JWT_SECRET);
+      // res.json(authtoken)
+
       res.status(201).send({
         message: `${req.body.username} Registered Successfully`,
         result: savedUser,
