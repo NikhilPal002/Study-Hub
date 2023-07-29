@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
-const mongoURI = "mongodb://127.0.0.1:27017/studyMaterial?readPreference=primary&directConnection=true&tls=false";
-// const mongoURI = "mongodb+srv://nikhilpal2017:QXdbK3DQn1EJMjRV@cluster0.atrg7np.mongodb.net/";
 mongoose.set('strictQuery', false);
+require('dotenv').config();
+
+const mongoURI = process.env.MONGO_URL;
 
 const connectToMongo = () => {        // using async and await function so that promises can resolve
   mongoose
