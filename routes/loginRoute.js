@@ -41,7 +41,7 @@ router.post('/login',
 
       res.status(200).send({
         message: "Login Successful",
-        user,
+        user,     // to get user details.
         token: authtoken,
       });
     }
